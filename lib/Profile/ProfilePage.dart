@@ -3,10 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:readerabooks/HomeScreen/WidgetsToSTF/cards/CardsToBookShelf.dart';
 import 'package:readerabooks/HomeScreen/WidgetsToSTF/cards/MyBooks.dart';
 import 'package:readerabooks/Profile/cardsProfilePages.dart';
+import 'package:readerabooks/Profile/widgets/CardsToCollections.dart';
+import 'package:readerabooks/Profile/widgets/CardsToGenger.dart';
 import 'package:readerabooks/ThemeMyApp/CustomTheme.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:readerabooks/ThemeMyApp/config.dart';
+
+import 'widgets/CardsToUpdates.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
@@ -16,6 +20,19 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
+
+
+  List<String> gengerToProfilePage = <String>[
+    "Научная фантастика",
+      "Фэнтези",
+    "Детектив",
+        "Романтика",
+      "Триллер",
+        "Ужасы",
+  ];
+
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -115,6 +132,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   
               ),
             ),
+            
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Container(
@@ -130,6 +148,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                           width: MediaQuery.of(context).size.width * 0.4,
                                           height: MediaQuery.of(context).size.height * 0.05,
                               decoration: BoxDecoration(
+                                borderRadius: BorderRadius.all(Radius.circular(10)),
                                           border: Border.all(
                                             color: const Color(0xFFD1D0D0),
                                             width: 2.0,
@@ -152,6 +171,7 @@ class _ProfilePageState extends State<ProfilePage> {
                     width: MediaQuery.of(context).size.width * 0.4,
                     height: MediaQuery.of(context).size.height * 0.05,
                   decoration: BoxDecoration(
+                    borderRadius: BorderRadius.all(Radius.circular(10)),
                     border: Border.all(
                       color: const Color(0xFFD1D0D0),
                       width: 2.0,
@@ -160,7 +180,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   ),
                   child: const Center(
                     child: Text(
-                      "Writen",
+                      "Written",
                       style: TextStyle(
                         color: Color(0xFFD1D0D0), 
                       ),
@@ -173,10 +193,122 @@ class _ProfilePageState extends State<ProfilePage> {
                 ),
               ),
             ),
-      
+            
             Padding(
               padding: const EdgeInsets.all(10.0),
-              child: Align(alignment: Alignment.centerLeft,child: Text('Mevcut kitaplar',style:TextStyle(color: currentTheme.currentTheme == CustomTheme.darkTheme?const Color(0xFF6F6F6F):const Color(0xFF6F6F6F),fontSize: 18, fontWeight: FontWeight.w400),)),
+              child: Container(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text('Collection',style:TextStyle(color: currentTheme.currentTheme == CustomTheme.darkTheme?const Color(0xFF6F6F6F):const Color(0xFF6F6F6F),fontSize: 18, fontWeight: FontWeight.w400),),
+                    GestureDetector(
+                      child: Text('More...',style:TextStyle(color: currentTheme.currentTheme == CustomTheme.darkTheme?const Color(0xFF6F6F6F):const Color(0xFF6F6F6F),fontSize: 14, fontWeight: FontWeight.w400),),
+                    ),
+                 
+                 
+                  ],
+                ),
+              ),
+            ),
+            
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  children: List.generate(4, (index) => Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: CardsToCollections(),
+                  )),
+                ),
+              ),
+              
+              
+              ),
+              Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Container(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text('Updates',style:TextStyle(color: currentTheme.currentTheme == CustomTheme.darkTheme?const Color(0xFF6F6F6F):const Color(0xFF6F6F6F),fontSize: 18, fontWeight: FontWeight.w400),),
+                    GestureDetector(
+                      child: Text('More...',style:TextStyle(color: currentTheme.currentTheme == CustomTheme.darkTheme?const Color(0xFF6F6F6F):const Color(0xFF6F6F6F),fontSize: 14, fontWeight: FontWeight.w400),),
+                    ),
+                 
+                 
+                  ],
+                ),
+              ),
+            ),
+
+             Container(
+              width: MediaQuery.of(context).size.width * 0.9,
+                decoration: BoxDecoration(
+          borderRadius: BorderRadius.all(Radius.circular(12)),
+          color: Theme.of(context).primaryColor.withOpacity(0.4),
+           boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.3),
+                          spreadRadius: 3,
+                          blurRadius: 4,
+                          offset: Offset(0, 2),
+                        ),
+                                    ],
+        ),
+               child: Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: Wrap(
+                  children: List.generate(gengerToProfilePage.length, (index) => CardsToUpdates()),
+                ),
+                
+                
+                ),
+             ),
+
+
+               Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Container(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text('Themes',style:TextStyle(color: currentTheme.currentTheme == CustomTheme.darkTheme?const Color(0xFF6F6F6F):const Color(0xFF6F6F6F),fontSize: 18, fontWeight: FontWeight.w400),),
+                    GestureDetector(
+                      child: Text('More...',style:TextStyle(color: currentTheme.currentTheme == CustomTheme.darkTheme?const Color(0xFF6F6F6F):const Color(0xFF6F6F6F),fontSize: 14, fontWeight: FontWeight.w400),),
+                    ),
+                 
+                 
+                  ],
+                ),
+              ),
+            ),
+
+             Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Wrap(
+                
+                children: List.generate(gengerToProfilePage.length, (index) => CardsToGenger(name: gengerToProfilePage[index],)),
+              ),
+              
+              
+              ),
+
+
+
+
+           Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Container(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text('All books',style:TextStyle(color: currentTheme.currentTheme == CustomTheme.darkTheme?const Color(0xFF6F6F6F):const Color(0xFF6F6F6F),fontSize: 18, fontWeight: FontWeight.w400),),
+                   
+                 
+                  ],
+                ),
+              ),
             ),
       
             Container(

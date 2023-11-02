@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:readerabooks/SettingsPage/Personal%20Info/widgets/AvatarChange.dart';
+import 'package:readerabooks/SettingsPage/Personal%20Info/widgets/BioChange.dart';
+import 'package:readerabooks/SettingsPage/Personal%20Info/widgets/PersonalInfo.dart';
 
 class ProfileSettingsPage extends StatefulWidget {
   const ProfileSettingsPage({super.key});
@@ -27,6 +30,18 @@ class _ProfileSettingsPageState extends State<ProfileSettingsPage> {
         ),
       ),
       backgroundColor: Theme.of(context).primaryColor,
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            SizedBox(height: 30,),
+            AvatarChange(),
+            SizedBox(height: 30,),
+            PersonalInfo(),
+            SizedBox(height: 30,),
+            BioChange(),
+          ],
+        ),
+      ),
     );
   }
 }

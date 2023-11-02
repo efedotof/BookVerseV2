@@ -7,6 +7,8 @@ import 'package:readerabooks/Definingpage/AdditionScreens/LabelText.dart';
 import 'package:readerabooks/HomeScreen/Home.dart';
 import 'package:readerabooks/Registration/widgets/TextField.dart';
 
+import 'NotificationPermission.dart';
+
 class Registration extends StatefulWidget {
   const Registration({super.key});
 
@@ -109,7 +111,7 @@ class _RegistrationState extends State<Registration> {
                           onPressed: () {
                             Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) => const Home()),
+                              MaterialPageRoute(builder: (context) => const NotificationPermission()),
                             );
                           }),
                     ),

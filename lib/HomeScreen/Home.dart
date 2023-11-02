@@ -4,6 +4,8 @@ import 'package:readerabooks/HomeScreen/AdditionScreens/Bag.dart';
 import 'package:readerabooks/HomeScreen/AdditionScreens/Booksstore.dart';
 import 'package:readerabooks/HomeScreen/AdditionScreens/Bookshelf.dart';
 import 'package:readerabooks/HomeScreen/AdditionScreens/Communication.dart';
+import 'package:readerabooks/Profile/ProfilePage.dart';
+import 'package:readerabooks/ProfileMy/ProfilePage.dart';
 import 'package:readerabooks/SettingsPage/Setting.dart';
 import 'package:readerabooks/Scanner/ScannerQr.dart';
 import 'package:readerabooks/HomeScreen/AdditionScreens/notification.dart';
@@ -28,6 +30,7 @@ class _HomeState extends State<Home> {
     const BookShare(),
     const Bag(),
     const Communication(),
+    const MyProfilePage(),
     const SettingMenuPages(),
   ];
 
@@ -103,7 +106,12 @@ class _HomeState extends State<Home> {
             ),
             const BottomNavigationBarItem(
               icon: Icon(Icons.person_2),
-              label: 'MenuItemsFiveAccount',
+              label: 'Avatar',
+              
+            ),
+            const BottomNavigationBarItem(
+              icon: Icon(Icons.settings),
+              label: 'Setting',
               
             ),
           ],

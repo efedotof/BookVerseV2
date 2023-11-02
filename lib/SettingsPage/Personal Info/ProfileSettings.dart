@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:readerabooks/ProfileMy/ProfilePage.dart';
 
 import '../../Profile/ProfilePage.dart';
 import 'ProfileSettingsPage.dart';
@@ -20,7 +21,18 @@ class _ProfileSettingsState extends State<ProfileSettings> {
         onTap: (){
           Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => const ProfilePage()),
+              MaterialPageRoute(builder: (context) =>  Scaffold(
+                 appBar: AppBar(elevation: 0,backgroundColor: Colors.transparent,leading: IconButton(
+    icon: const Icon(Icons.chevron_left), // Замените "new_icon" на иконку, которую вы хотите использовать
+    onPressed: () {
+      Navigator.pop(context);
+    },
+  ),),
+      backgroundColor: Theme.of(context).primaryColor,
+                
+                
+                
+                body: MyProfilePage())),
             );
         },
         child: Container(
@@ -50,8 +62,7 @@ class _ProfileSettingsState extends State<ProfileSettings> {
                 ],
               ),
                     
-                  
-                       Icon(Icons.mode_edit, color: Theme.of(context).focusColor),
+              Icon(Icons.remove_red_eye_sharp, color: Theme.of(context).focusColor),
                     
             ],
           ),
